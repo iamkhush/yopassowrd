@@ -7,6 +7,9 @@ from itertools import chain
 
 
 def main():
+	'''
+	Main module for generating password.
+	'''
 	if config.passtype == 'complex':
 		key = 'max'			
 		password = generate_pass(key)
@@ -17,7 +20,15 @@ def main():
 
 
 def generate_pass(key):
-	password = list(
+	'''Generates chained list of strings, taking configurtion settings from config.py.
+
+	Args:
+		key: string Either min or max.
+
+	Returns:
+		List of strings.
+	'''
+	return list(
 		chain(
 				(random.choice(string.uppercase) for _ in range(config.upperlen[key])),
 				(random.choice(string.lowercase) for _ in range(config.lowerlen[key])),
@@ -26,6 +37,5 @@ def generate_pass(key):
 				(random.choice(string.letters) for _ in range(config.totallen['max']-config.punclen[key])),
 		)
 	)
-	return password
 
 print main()
