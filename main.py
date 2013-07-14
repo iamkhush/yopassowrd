@@ -7,7 +7,7 @@ from itertools import chain
 
 
 def main():
-	if config.type == 'complex':
+	if config.passtype == 'complex':
 		key = 'max'			
 		password = generate_pass(key)
 		return "".join(random.sample(password, config.totallen['max']))
